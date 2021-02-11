@@ -1,5 +1,4 @@
-import java.io.File;
-import java.io.FileNotFoundException;
+import java.io.*;
 import java.util.*;
 public class FileIO_Demo {
 
@@ -28,9 +27,22 @@ public class FileIO_Demo {
 		/*Writing to a File
 		 * Use a FileWriter to create an output stream to the file
 		 * Nest the FileWriter inside the PrintWriter. PrintWriter provides
-		 * additional methods for writing
+		 * additional methods for writing.
+		 * Write to the file using methods of the PrintWriter
+		 * Close the streams when done
 		 */
 		
+		try {
+			FileWriter fileWriter = new FileWriter("qu_file.txt");
+			PrintWriter out = new PrintWriter(fileWriter);
+			out.println("We like bobcats!");
+			out.println("We also like the Sleeping Giant");
+			fileWriter.close();
+			out.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 	}
 

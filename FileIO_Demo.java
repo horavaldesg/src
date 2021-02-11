@@ -25,6 +25,13 @@ public class FileIO_Demo {
 //			System.out.print(kb.next() + " ");
 //		}
 		
+		/*Writing to a File
+		 * Use a FileWriter to create an output stream to the file
+		 * Nest the FileWriter inside the PrintWriter. PrintWriter provides
+		 * additional methods for writing
+		 */
+		
+		
 	}
 
 }

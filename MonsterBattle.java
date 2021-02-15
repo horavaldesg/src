@@ -15,7 +15,7 @@ public class MonsterBattle {
 			
 			break;
 		case 2: createMonster();
-			
+				
 			
 			
 			break;
@@ -30,58 +30,89 @@ public class MonsterBattle {
 		Boolean monsterIsAlive = true;
 		
 		//Who attacks first
-		monsterA.getAttackPriority();
 		
-		monsterB.getAttackPriority();
 		//Monster A goes first
 		while(monsterIsAlive) {
+			monsterA.getAttackPriority();
+			
+			monsterB.getAttackPriority();
 			if(monsterA.getAttackPriority() > monsterB.getAttackPriority()) 
 			{
+				monsterB.takeDamage(monsterA.attack());
 				System.out.printf("%s attacked %s for %.2f damage \n", monsterA.getName(), monsterB.getName(), monsterA.attack());
 				
-				monsterB.takeDamage(monsterA.attack());
-				if(monsterA.isAlive() && monsterB.isAlive() == false) {
+				if(monsterA.isAlive() && monsterB.isAlive()){
+					System.out.println(monsterA.toString());
+					System.out.println(monsterB.toString());
+					System.out.println("\n");
+				}
+				else if(monsterA.isAlive() && monsterB.isAlive() == false) {
 					System.out.printf("%s is declared the winner and the battle is over Monster\n", monsterA.getName());
 					monsterIsAlive = false;
 				}
 				
-				else {
-					System.out.println(monsterA.toString());
-					System.out.println(monsterB.toString());
-				}
+				
 			}
 			//Monster B goes first
 			else if(monsterA.getAttackPriority() < monsterB.getAttackPriority()) 
 			{
-				System.out.printf("%s attacked %s for %.2f damage\n", monsterB.getName(), monsterA.getName(), monsterB.attack());
 				monsterA.takeDamage(monsterB.attack());
-				 if(monsterB.isAlive() && monsterA.isAlive() == false) {
+				System.out.printf("%s attacked %s for %.2f damage\n", monsterB.getName(), monsterA.getName(), monsterB.attack());
+				if(monsterB.isAlive() && monsterA.isAlive()){
+					System.out.println(monsterA.toString());
+					System.out.println(monsterB.toString());
+					System.out.println("\n");
+				}
+				else if(monsterB.isAlive() && monsterA.isAlive() == false) {
 					System.out.printf("%s is declared the winner and the battle is over Monster\n", monsterB.getName());
 					monsterIsAlive = false;
 				}
-				else {
-					monsterA.toString();
-					monsterB.toString();
-				}
+				
 	
 			}
-//			else if(monsterA.getAttackPriority() == monsterB.getAttackPriority()) 
-//			{
-//				System.out.printf("%s attacked %s for %.2f damage\n", monsterB.getName(), monsterA.getName(), monsterB.attack());
-//				monsterB.takeDamage(monsterA.attack());
-//				if(monsterA.isAlive() && monsterB.isAlive() == false) {
-//					System.out.printf("%s is declared the winner and the battle is over\n", monsterA.getName());
-//					monsterIsAlive = false;
-//				}
-//				else if(monsterB.isAlive() && monsterA.isAlive() == false) {
-//					System.out.printf("%s is declared the winner and the battle is over\n", monsterB.getName());
-//					monsterIsAlive = false;
-//				}
-//				else {
-//					monsterA.toString();
-//					monsterB.toString();
-//				}
-//			}
+			else if(monsterA.getAttackPriority() == monsterB.getAttackPriority()) 
+			{
+				double randDouble = Math.random();
+				int rand = 0;
+				if(randDouble >= 0.5f) {
+					rand = 1;
+				}
+				else {
+					rand = 0;
+				}
+				
+				
+				switch(rand) {
+				case 0: //Monster A attacks first
+				monsterB.takeDamage(monsterA.attack());
+				System.out.printf("%s attacked %s for %.2f damage \n", monsterA.getName(), monsterB.getName(), monsterA.attack());
+				
+				if(monsterA.isAlive() && monsterB.isAlive()){
+					System.out.println(monsterA.toString());
+					System.out.println(monsterB.toString());
+					System.out.println("\n");
+				}
+				else if(monsterA.isAlive() && monsterB.isAlive() == false) {
+					System.out.printf("%s is declared the winner and the battle is over Monster\n", monsterA.getName());
+					monsterIsAlive = false;
+				}
+					break;
+				case 1: // monster B attacks first
+				monsterA.takeDamage(monsterB.attack());
+				System.out.printf("%s attacked %s for %.2f damage\n", monsterB.getName(), monsterA.getName(), monsterB.attack());
+				if(monsterB.isAlive() && monsterA.isAlive()){
+					System.out.println(monsterA.toString());
+					System.out.println(monsterB.toString());
+					System.out.println("\n");
+				}
+				else if(monsterB.isAlive() && monsterA.isAlive() == false) {
+					System.out.printf("%s is declared the winner and the battle is over Monster\n", monsterB.getName());
+					monsterIsAlive = false;
+				}
+					break;
+				}
+				
+			}
 				
 		//Attack
 				
@@ -101,11 +132,12 @@ public class MonsterBattle {
 		String fileName = kb.nextLine();
 		readMonster(fileName);
 		System.out.println("Please enter a file name for the second monster");
-		
 //		kb.nextLine();
 		
 		String fileName2 = kb.nextLine();
 		readMonster(fileName2);
+		
+		
 	}
 	
 	public static void readMonster(String name) {

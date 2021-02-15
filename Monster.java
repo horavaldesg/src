@@ -32,7 +32,7 @@ public class Monster {
     public double takeDamage(double damage) {return this.health = this.health - damage;}
     
     public double getAttackPriority() { return  this.speed * Math.random();}
-    
+//    public double getAttackPriority() { return 1;}
     public String toString() {return String.format("name: %s, health: %.2f, strength: %.2f, speed: %d", this.name, this.health, this.strength, this.speed);}
 
     

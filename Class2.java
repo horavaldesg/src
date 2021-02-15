@@ -93,6 +93,7 @@ public class Class2
 		case 75: 
 				System.out.println("75");
 				break;
+		
 		case 65: 
 				System.out.println("65");
 				break;

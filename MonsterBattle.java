@@ -1,8 +1,16 @@
+/**
+ * 
+ */
+
+/**
+ * @author Horacio Valdes and Hanna Morreale
+ * Description: Monster class controller
+ *
+ */
 import java.io.*;
 import java.util.Scanner;
 public class MonsterBattle {
-	public static Boolean validFileName = false;
-
+	
 	public static void main(String[] args) {
 		Scanner kb = new Scanner(System.in);
 		System.out.println("1: Premade Enemies \n2: Make your own Enemies");
@@ -26,14 +34,94 @@ public class MonsterBattle {
 		}
 	}
 	
+	public static void createMonster() {
+		Scanner kb = new Scanner(System.in);
+
+		//First Monster
+		System.out.println("Please enter a file name for the first monster");
+//		kb.nextLine();
+		
+		String fileName = kb.nextLine();
+		File file = new File(fileName);
+		Monster monsterA = new Monster();
+		try 
+		{
+			kb = new Scanner(file);
+			
+		} 
+		catch (FileNotFoundException e) 
+		{
+			createMonster();
+		}
+		while(kb.hasNextLine()) {
+			
+			monsterA.setName(kb.nextLine());
+			monsterA.setHealth(kb.nextDouble());
+			monsterA.setStrength(kb.nextDouble());
+			monsterA.setSpeed(kb.nextInt());
+			
+		}
+		kb.close();
+		/*
+		System.out.println(monsterA.getName());
+		System.out.println(monsterA.getHealth());
+		System.out.println(monsterA.getStrength());
+		System.out.println(monsterA.getSpeed());
+		*/
+		
+		createMonster2(monsterA);
+
+	}
+	public static void createMonster2(Monster monsterA) {
+		Scanner kb = new Scanner(System.in);
+		
+		//First Monster
+		System.out.println("Please enter a file name for the second monster");
+//		kb.nextLine();
+		
+		String fileName = kb.nextLine();
+		File file = new File(fileName);
+		
+		Monster monsterB = new Monster();
+		try 
+		{
+			kb = new Scanner(file);
+			
+		} 
+		catch (FileNotFoundException e) 
+		{
+			createMonster2(monsterA);
+		}
+		while(kb.hasNextLine()) {
+			
+			monsterB.setName(kb.nextLine());
+			monsterB.setHealth(kb.nextDouble());
+			monsterB.setStrength(kb.nextDouble());
+			monsterB.setSpeed(kb.nextInt());
+			
+			
+		}
+		
+		kb.close();
+		/*
+		System.out.println(monsterB.getName());
+		System.out.println(monsterB.getHealth());
+		System.out.println(monsterB.getStrength());
+		System.out.println(monsterB.getSpeed());
+		*/
+		
+		
+		Battle(monsterA, monsterB);
+	}
+	
 	public static void Battle(Monster monsterA, Monster monsterB) {
 		//Run battle
-		Boolean monsterIsAlive = true;
+		
 		
 		//Who attacks first
 		
 		//Monster A goes first
-		while(monsterIsAlive) {
+		while(monsterA.isAlive() && monsterB.isAlive()) {
 			monsterA.getAttackPriority();
 			
 			monsterB.getAttackPriority();
@@ -49,7 +137,6 @@ public class MonsterBattle {
 				}
 				else if(monsterA.isAlive() && monsterB.isAlive() == false) {
 					System.out.printf("%s is declared the winner and the battle is over Monster\n", monsterA.getName());
-					monsterIsAlive = false;
 				}
 				
 				
@@ -66,11 +153,11 @@ public class MonsterBattle {
 				}
 				else if(monsterB.isAlive() && monsterA.isAlive() == false) {
 					System.out.printf("%s is declared the winner and the battle is over Monster\n", monsterB.getName());
-					monsterIsAlive = false;
 				}
 				
 	
 			}
+			//Attack priority is the same on both monsters
 			else if(monsterA.getAttackPriority() == monsterB.getAttackPriority()) 
 			{
 				double randDouble = Math.random();
@@ -95,7 +182,6 @@ public class MonsterBattle {
 				}
 				else if(monsterA.isAlive() && monsterB.isAlive() == false) {
 					System.out.printf("%s is declared the winner and the battle is over Monster\n", monsterA.getName());
-					monsterIsAlive = false;
 				}
 					break;
 				case 1: // monster B attacks first
@@ -108,58 +194,14 @@ public class MonsterBattle {
 				}
 				else if(monsterB.isAlive() && monsterA.isAlive() == false) {
 					System.out.printf("%s is declared the winner and the battle is over Monster\n", monsterB.getName());
-					monsterIsAlive = false;
 				}
-					break;
+					
 				}
 				
 			}
 				
-		//Attack
-				
-				
-		
-		//Win condition
-			
-		}
-	}
 	
-	public static void createMonster() {
-		Scanner kb = new Scanner(System.in);
-
-		System.out.println("Please enter a file name");
-//		kb.nextLine();
-		
-		String fileName = kb.nextLine();
-		readMonster(fileName);
-		System.out.println("Please enter a file name for the second monster");
-//		kb.nextLine();
-		
-		String fileName2 = kb.nextLine();
-		readMonster(fileName2);
-		
-		
-	}
-	
-	public static void readMonster(String name) {
-		
-		try 
-		{
-			FileWriter fileWriter = new FileWriter(name);
-			PrintWriter out = new PrintWriter(fileWriter);
-			name = name.split(".txt")[0];
-			Monster newMonster = new Monster();
-			// Write file with values
-			out.println(newMonster.setName(name));
-//			System.out.println(newMonster.toString());
-			validFileName = true;
 			
-			out.close();
-		} 
-		catch (IOException e) 
-		{
-			
-			createMonster();
 		}
 	}
 }

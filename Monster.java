@@ -1,8 +1,21 @@
 
+/**
+ * 
+ */
+
+/**
+ * @author Horacio Valdes and Hanna Morreale
+ * Description: Monster blueprint
+ *
+ */
 public class Monster {
+	// Monster health
 	private double health ;
+	// Monster strength
 	private double strength;
+	// Monster name
 	private String name;
+	// Monster speed
 	private int speed; 
 	
 	public Monster() {
@@ -15,6 +28,8 @@ public class Monster {
 		this.name = newName;
 		this.speed = newSpeed;
 	}
+	
+	//Getters for monster
     public double getHealth() { return this.health; }
     public double getStrength() { return this.strength; }
     public String getName() { return this.name;}
@@ -22,7 +37,7 @@ public class Monster {
     
     
     
-    
+    //Setters for monsters
     public double setHealth(double health) { return this.health = health; }
     public double setStrength(double strength) { return this.strength = strength; }
     public String setName(String name) {return this.name = name;}
@@ -31,8 +46,10 @@ public class Monster {
     public double attack() {return  Math.random() * this.strength;}
     public double takeDamage(double damage) {return this.health = this.health - damage;}
     
+    
     public double getAttackPriority() { return  this.speed * Math.random();}
-//    public double getAttackPriority() { return 1;}
+    
+    //Format monster properties
     public String toString() {return String.format("name: %s, health: %.2f, strength: %.2f, speed: %d", this.name, this.health, this.strength, this.speed);}
 
     

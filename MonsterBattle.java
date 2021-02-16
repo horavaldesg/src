@@ -1,10 +1,10 @@
 /**
- * 
+ *  Description: Monster class controller
  */
 
 /**
  * @author Horacio Valdes and Hanna Morreale
- * Description: Monster class controller
+ *
  *
  */
 import java.io.*;
@@ -136,6 +136,8 @@ public class MonsterBattle {
 					System.out.println("\n");
 				}
 				else if(monsterA.isAlive() && monsterB.isAlive() == false) {
+					System.out.printf("%s: %f\n", monsterA.getName() , monsterA.getHealth());
+					System.out.printf("%s: %f\n",monsterA.getName() , monsterB.getHealth());
 					System.out.printf("%s is declared the winner and the battle is over Monster\n", monsterA.getName());
 				}
 				
@@ -152,6 +154,8 @@ public class MonsterBattle {
 					System.out.println("\n");
 				}
 				else if(monsterB.isAlive() && monsterA.isAlive() == false) {
+					System.out.printf("%s: %f\n", monsterA.getName() , monsterA.getHealth());
+					System.out.printf("%s: %f\n",monsterA.getName() , monsterB.getHealth());
 					System.out.printf("%s is declared the winner and the battle is over Monster\n", monsterB.getName());
 				}
 				
@@ -181,6 +185,8 @@ public class MonsterBattle {
 					System.out.println("\n");
 				}
 				else if(monsterA.isAlive() && monsterB.isAlive() == false) {
+					System.out.println(monsterA.getName() + monsterA.getHealth());
+					System.out.println(monsterA.getName() + monsterB.getHealth());
 					System.out.printf("%s is declared the winner and the battle is over Monster\n", monsterA.getName());
 				}
 					break;
@@ -193,6 +199,8 @@ public class MonsterBattle {
 					System.out.println("\n");
 				}
 				else if(monsterB.isAlive() && monsterA.isAlive() == false) {
+					System.out.printf("%s: %f\n", monsterA.getName() , monsterA.getHealth());
+					System.out.printf("%s: %f\n",monsterA.getName() , monsterB.getHealth());
 					System.out.printf("%s is declared the winner and the battle is over Monster\n", monsterB.getName());
 				}
 					

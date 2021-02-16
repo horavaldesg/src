@@ -1,11 +1,11 @@
 
 /**
- * 
+ * Description: Monster blueprint
  */
 
 /**
  * @author Horacio Valdes and Hanna Morreale
- * Description: Monster blueprint
+ * 
  *
  */
 public class Monster {

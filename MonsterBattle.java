@@ -5,6 +5,7 @@ public class MonsterBattle {
 
 	public static void main(String[] args) {
 		Scanner kb = new Scanner(System.in);
+		System.out.println("1: Premade Enemies \n2: Make your own Enemies");
 		int input = kb.nextInt();
 		
 		switch(input) {

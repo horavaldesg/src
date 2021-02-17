@@ -23,7 +23,7 @@ public class MonsterBattle {
 			Battle(Giant, Ogre);
 			
 			break;
-		case 2: createMonster();
+		case 2: createMonsterA();
 				
 			
 			
@@ -34,7 +34,7 @@ public class MonsterBattle {
 		}
 	}
 	
-	public static void createMonster() {
+	public static void createMonsterA() {
 		Scanner kb = new Scanner(System.in);
 
 		//First Monster
@@ -51,7 +51,7 @@ public class MonsterBattle {
 		} 
 		catch (FileNotFoundException e) 
 		{
-			createMonster();
+			createMonsterA();
 		}
 		while(kb.hasNextLine()) {
 			
@@ -69,10 +69,10 @@ public class MonsterBattle {
 		System.out.println(monsterA.getSpeed());
 		*/
 		
-		createMonster2(monsterA);
+		createMonsterB(monsterA);
 
 	}
-	public static void createMonster2(Monster monsterA) {
+	public static void createMonsterB(Monster monsterA) {
 		Scanner kb = new Scanner(System.in);
 		
 		//First Monster
@@ -90,7 +90,7 @@ public class MonsterBattle {
 		} 
 		catch (FileNotFoundException e) 
 		{
-			createMonster2(monsterA);
+			createMonsterB(monsterA);
 		}
 		while(kb.hasNextLine()) {
 			

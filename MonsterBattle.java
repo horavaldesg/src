@@ -62,12 +62,7 @@ public class MonsterBattle {
 			
 		}
 		kb.close();
-		/*
-		System.out.println(monsterA.getName());
-		System.out.println(monsterA.getHealth());
-		System.out.println(monsterA.getStrength());
-		System.out.println(monsterA.getSpeed());
-		*/
+		
 		
 		createMonsterB(monsterA);
 
@@ -103,12 +98,7 @@ public class MonsterBattle {
 		}
 		
 		kb.close();
-		/*
-		System.out.println(monsterB.getName());
-		System.out.println(monsterB.getHealth());
-		System.out.println(monsterB.getStrength());
-		System.out.println(monsterB.getSpeed());
-		*/
+		
 		
 		
 		Battle(monsterA, monsterB);
